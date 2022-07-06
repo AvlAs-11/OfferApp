@@ -17,10 +17,6 @@ class MainViewController: UIViewController {
         configuration()
     }
     
-    override public var shouldAutorotate: Bool {
-        return false
-    }
-    
     override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeLeft
     }
@@ -31,7 +27,7 @@ class MainViewController: UIViewController {
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         DispatchQueue.main.async { [self] in
-            mainView.frame = self.view.bounds
+            self.mainView.frame = self.view.bounds
         }
     }
     
@@ -49,7 +45,13 @@ class MainViewController: UIViewController {
         timerModel.delegate = self
         let frame = view.safeAreaLayoutGuide.layoutFrame
         view.addSubview(mainView)
-        mainView.frame = frame
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.mainView.frame = CGRect(x: 0, y: 0, width: self.view.frame.height, height: self.view.frame.width)
+        }
+        else {
+            mainView.frame = frame
+            
+        }
         mainView.activateButton.addTarget(self, action: #selector(activateButtonAction),
                                           for: .touchUpInside)
     }
