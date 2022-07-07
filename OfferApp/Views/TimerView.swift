@@ -59,18 +59,18 @@ class TimerView: UIView {
             separator1.leftAnchor.constraint(equalTo: dayCounterView.rightAnchor, constant: 2),
             hourCounterView.rightAnchor.constraint(equalTo: separator2.leftAnchor, constant: -2),
             hourCounterView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            hourCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            hourCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.23),
             minuteCounterView.leftAnchor.constraint(equalTo: separator2.rightAnchor, constant: 2),
             minuteCounterView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            minuteCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            minuteCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.23),
             separator3.leftAnchor.constraint(equalTo: minuteCounterView.rightAnchor, constant: 2),
             separator1.rightAnchor.constraint(equalTo: hourCounterView.leftAnchor, constant: -2),
             dayCounterView.rightAnchor.constraint(equalTo: separator1.leftAnchor, constant: -2),
             dayCounterView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            dayCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            dayCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.23),
             secondCounterView.leftAnchor.constraint(equalTo: separator3.rightAnchor, constant: 2),
             secondCounterView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            secondCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2)
+            secondCounterView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.23)
         ])
     }
 }

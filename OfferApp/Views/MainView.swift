@@ -56,7 +56,7 @@ class MainView: UIView {
         label.numberOfLines = 1
         label.textColor = .gray
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.035, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.0359, weight: .regular)
         return label
     }()
     
@@ -87,45 +87,88 @@ class MainView: UIView {
         topAnnotationLabel.translatesAutoresizingMaskIntoConstraints = false
         activateButton.translatesAutoresizingMaskIntoConstraints = false
         botAnnotationStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            musicImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.4),
-            musicImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            musicImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-            topLabel.bottomAnchor.constraint(equalTo: midLabel.topAnchor, constant: -UIScreen.main.bounds.width * 0.03),
-            topLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            topLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                            constant: -UIScreen.main.bounds.width * 0.065),
-            midLabel.bottomAnchor.constraint(equalTo: botLabel.topAnchor,
-                                             constant: -UIScreen.main.bounds.width * 0.02),
-            midLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            midLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                            constant: -UIScreen.main.bounds.width * 0.065),
-            botLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            botLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                            constant: -UIScreen.main.bounds.width * 0.065),
-            botLabel.bottomAnchor.constraint(equalTo: timerView.topAnchor,
-                                             constant: -UIScreen.main.bounds.width * 0.05),
-            timerView.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            timerView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.12),
-            timerView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                             constant: -UIScreen.main.bounds.width * 0.065),
-            timerView.bottomAnchor.constraint(equalTo: topAnnotationLabel.topAnchor,
-                                              constant: -UIScreen.main.bounds.width * 0.04),
-            topAnnotationLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            topAnnotationLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                                      constant: -UIScreen.main.bounds.width * 0.065),
-            topAnnotationLabel.bottomAnchor.constraint(equalTo: activateButton.topAnchor,
+  
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            topLabel.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.043, weight: .semibold)
+            midLabel.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.099, weight: .black)
+            botLabel.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.025, weight: .semibold)
+            topAnnotationLabel.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.022, weight: .regular)
+            activateButton.titleLabel?.font = UIFont.systemFont(ofSize: UIScreen.main.bounds.width * 0.025, weight: .semibold)
+            
+            NSLayoutConstraint.activate([
+                musicImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+                musicImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
+                musicImageView.rightAnchor.constraint(equalTo: activateButton.leftAnchor),
+                topLabel.bottomAnchor.constraint(equalTo: midLabel.topAnchor, constant: -UIScreen.main.bounds.width * 0.03),
+                topLabel.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                midLabel.bottomAnchor.constraint(equalTo: botLabel.topAnchor,
+                                                 constant: -UIScreen.main.bounds.width * 0.02),
+                midLabel.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                botLabel.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                botLabel.bottomAnchor.constraint(equalTo: timerView.topAnchor,
+                                                 constant: -UIScreen.main.bounds.width * 0.05),
+                timerView.widthAnchor.constraint(equalTo: activateButton.widthAnchor),
+                timerView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.07),
+                timerView.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                timerView.bottomAnchor.constraint(equalTo: topAnnotationLabel.topAnchor,
+                                                  constant: -UIScreen.main.bounds.width * 0.04),
+                topAnnotationLabel.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                topAnnotationLabel.bottomAnchor.constraint(equalTo: activateButton.topAnchor,
+                                                           constant: -UIScreen.main.bounds.width * 0.025),
+                activateButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.373),
+                activateButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                      constant: -UIScreen.main.bounds.width * 0.088),
+                activateButton.bottomAnchor.constraint(equalTo: botAnnotationStackView.topAnchor,
                                                        constant: -UIScreen.main.bounds.width * 0.025),
-            activateButton.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
-            activateButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
-                                                  constant: -UIScreen.main.bounds.width * 0.065),
-            activateButton.bottomAnchor.constraint(equalTo: botAnnotationStackView.topAnchor,
-                                                   constant: -UIScreen.main.bounds.width * 0.025),
-            activateButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
-            botAnnotationStackView.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
-            botAnnotationStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -UIScreen.main.bounds.width * 0.05)
-        ])
+                activateButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.108),
+                botAnnotationStackView.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                botAnnotationStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -UIScreen.main.bounds.width * 0.17)
+            ])
+            break
+        case .phone:
+            NSLayoutConstraint.activate([
+                musicImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.4),
+                musicImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+                musicImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
+                topLabel.bottomAnchor.constraint(equalTo: midLabel.topAnchor, constant: -UIScreen.main.bounds.width * 0.03),
+                topLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                topLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                constant: -UIScreen.main.bounds.width * 0.065),
+                midLabel.bottomAnchor.constraint(equalTo: botLabel.topAnchor,
+                                                 constant: -UIScreen.main.bounds.width * 0.02),
+                midLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                midLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                constant: -UIScreen.main.bounds.width * 0.065),
+                botLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                botLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                constant: -UIScreen.main.bounds.width * 0.065),
+                botLabel.bottomAnchor.constraint(equalTo: timerView.topAnchor,
+                                                 constant: -UIScreen.main.bounds.width * 0.05),
+                timerView.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                timerView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.12),
+                timerView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                 constant: -UIScreen.main.bounds.width * 0.065),
+                timerView.bottomAnchor.constraint(equalTo: topAnnotationLabel.topAnchor,
+                                                  constant: -UIScreen.main.bounds.width * 0.04),
+                topAnnotationLabel.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                topAnnotationLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                          constant: -UIScreen.main.bounds.width * 0.065),
+                topAnnotationLabel.bottomAnchor.constraint(equalTo: activateButton.topAnchor,
+                                                           constant: -UIScreen.main.bounds.width * 0.025),
+                activateButton.leftAnchor.constraint(equalTo: musicImageView.rightAnchor),
+                activateButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,
+                                                      constant: -UIScreen.main.bounds.width * 0.065),
+                activateButton.bottomAnchor.constraint(equalTo: botAnnotationStackView.topAnchor,
+                                                       constant: -UIScreen.main.bounds.width * 0.025),
+                activateButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
+                botAnnotationStackView.centerXAnchor.constraint(equalTo: activateButton.centerXAnchor),
+                botAnnotationStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -UIScreen.main.bounds.width * 0.05)
+            ])
+            break
+        default:
+            break
+        }
     }
 }
 
